@@ -1878,7 +1878,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 1
       addedObject: {fileID: 366932992}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7308235905141624706, guid: d33249e5ae722fb40ad2807c439696d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 853620302}
   m_SourcePrefab: {fileID: 100100000, guid: d33249e5ae722fb40ad2807c439696d9, type: 3}
 --- !u!4 &853620300 stripped
 Transform:
@@ -1886,6 +1890,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 853620299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &853620301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7308235905141624706, guid: d33249e5ae722fb40ad2807c439696d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 853620299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &853620302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853620301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cf7d2ffd8bbd34fa5262b8e1f738e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  rotationSpeed: 20
 --- !u!1001 &1005474118
 PrefabInstance:
   m_ObjectHideFlags: 0
