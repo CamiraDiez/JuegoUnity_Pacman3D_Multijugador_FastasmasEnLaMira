@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;   //para los ciclos for 
 using UnityEngine;
@@ -12,7 +11,7 @@ public class EnemyFollow : MonoBehaviour
 {
 
     // --- REFERENCIAS  ---
-    public Transform playerTarget;        //El jugador al que el enemigo va a seguir
+    public Transform playerTarget;     //El jugador al que el enemigo va a seguir
     //Vector3 dest;    //aqui ya esta privado, cordenadas x, y, z
     private NavMeshAgent agent;          //moverlo automaticamente en el laberinto 
 
@@ -67,7 +66,7 @@ public class EnemyFollow : MonoBehaviour
     }
      //vamos a ver la esfera para ver como ocurre todo-Gizmos 
         //private void OnDrawGimos()
-    void OnDrawGimosSelected()
+    void OnDrawGizmosSelected()
     {
             //vamos a dibujar un circulo para mostrar el rango de deteccion
             Gizmos.color = new Color(1f, 0.5f,0f);    //Naranja intenso
