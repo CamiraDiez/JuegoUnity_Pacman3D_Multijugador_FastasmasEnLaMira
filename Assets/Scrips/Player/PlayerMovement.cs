@@ -55,12 +55,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter(Collider other)
     {
+        ConsoleText.instance.RegisterText("Se estrello");
         if (other.CompareTag("PortalIzq"))
         {
+            Debug.Log("Llego al portal de la Izquierda");
             rb.MovePosition(posicionDer);
         }
         if (other.CompareTag("PortalDer"))
         {
+            Debug.Log("Llego al portal de la Derecha");
             rb.MovePosition(posicionIzq);
         }
     }

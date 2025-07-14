@@ -89,6 +89,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
             canvaJuego.SetActive(true);
             waitRoom.SetActive(false);
             play.SetActive(true);
+            ghost.SetActive(true);
         }
         
     }
@@ -99,6 +100,5 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         infoPlayer2.SetActive(true);
         vidas1.SetActive(true);
         vidas2.SetActive(true);
-        ghost.SetActive(true);
     }
 }

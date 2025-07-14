@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - MazeGeo
+  - PortalIzq
+  - PortalDer
   layers:
   - Default
   - TransparentFX
