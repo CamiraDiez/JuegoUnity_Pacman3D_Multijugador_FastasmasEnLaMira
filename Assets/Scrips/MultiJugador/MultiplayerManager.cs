@@ -14,7 +14,9 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject infoPlayer2;
     [SerializeField] private GameObject canvaJuego;
     [SerializeField] private GameObject waitRoom;
-
+    [SerializeField] private GameObject ContVidas1;
+    [SerializeField] private GameObject ContVidas2;
+    [SerializeField] public GameObject objetoDePremio;
 
     public PhotonView playerPrefab;
     public Transform spawPoint;
@@ -75,13 +77,15 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
 
     }
 
+    [PunRPC]
+
     private void FixedUpdate()
     {
         if(PhotonNetwork.CurrentRoom != null)
         {
             NoJugadores = PhotonNetwork.CurrentRoom.PlayerCount;
 
-            ConsolePlayerText.instance1.RegisterText("# de Jugadores: "+NoJugadores+"/"+MaxJugadoresRoom);
+            //ConsolePlayerText.instance1.RegisterText("# de Jugadores: "+NoJugadores+"/"+MaxJugadoresRoom);
         }
 
         if(NoJugadores == 2)
@@ -90,15 +94,19 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
             waitRoom.SetActive(false);
             play.SetActive(true);
             ghost.SetActive(true);
+            ContVidas1.SetActive(true);
+            ContVidas2.SetActive(true);
+            objetoDePremio.SetActive(true);
+
         }
         
     }
 
-    public void Jugar()
+    /*public void Jugar()
     {
         infoPlayer1.SetActive(true);
         infoPlayer2.SetActive(true);
         vidas1.SetActive(true);
         vidas2.SetActive(true);
-    }
+    }*/
 }
