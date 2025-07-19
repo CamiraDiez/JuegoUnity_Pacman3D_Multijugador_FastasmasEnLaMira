@@ -27,8 +27,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     [Header("Salud del Jugador")]
     public int maxLives = 3; // Vidas máximas del jugador
     private int currentLives; // Vidas actuales
+    public int CurrentLives => currentLives;
     private int JugadoresVivos = 2;
     public int currentPlayers; //Jugadores Actuales
+    
 
     // Variable para controlar si el jugador puede moverse
     private bool canMove = true;
@@ -45,7 +47,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public string tagDelObjeto = "Gano";
     public Vector3 nuevaPosicion = new Vector3(37.09f, 0.454f, 68.79f);
 
-
+    private void Start()
+    {
+        GameManager.instance.AddPlayer(this);
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         currentLives = maxLives;
         //Debug.Log($"Vidas iniciales del jugador: {currentLives}");
         currentPlayers = JugadoresVivos;
-        
+        //Debug.Log(currentPlayers);
     }
 
     void FixedUpdate()
@@ -96,7 +101,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Moneda"))
         {
             monedas++;
-            Debug.Log("Has encontrado una moneda");
+            //Debug.Log("Has encontrado una moneda");
             
             if (PhotonNetwork.IsMasterClient)
             {
@@ -174,30 +179,42 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         if (!photonView.IsMine) return;
 
         currentLives -= damageAmount;
+        photonView.RPC("Vidas",RpcTarget.Others,currentLives);
         //Debug.Log($"El jugador ha recibido {damageAmount} de daño. Vidas restantes: {currentLives}");
         if (PhotonNetwork.IsMasterClient)
         {
-            GetComponent<PhotonView>().RPC("GetHealth1", RpcTarget.All, currentLives);
+            photonView.RPC("GetHealth1", RpcTarget.All, currentLives);
         }
         else
         {
-            GetComponent<PhotonView>().RPC("GetHealth2", RpcTarget.All, currentLives);
+            photonView.RPC("GetHealth2", RpcTarget.All, currentLives);
         }
 
         // Si las vidas llegan a cero o menos, el jugador "muere"
         if (currentLives <= 0)
         {
+            DesactivarJugador();
+            GetComponent<PhotonView>().RPC("JugadorMuerto", RpcTarget.Others);
+            Debug.Log("Ocurre para muerte los clientes?");
             Die();
         }
         else // Si aún tiene vidas, teletransporta a la posición inicial
         {
+            Debug.Log("Ocurre para teletrasnportar los clientes?");
+            
             TeleportPlayer(posicionInicial);
+            
         }
     }
+
+    //Crear una una función que apague el jugador
+    //Crear un RPC que informe a todos los clientes
+
 
     // Método para manejar la muerte del jugador
     private void Die()
     {
+
         //JugadoresVivos--;
         //Debug.Log("Jugadores Vivos: " + JugadoresVivos);
         
@@ -205,32 +222,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         canMove = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        currentPlayers--;
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            currentPlayers--;
-            Debug.Log("¡El jugador 1 fue el que ha muerto!");
-            GetComponent<PhotonView>().RPC("Vivos", RpcTarget.All, currentPlayers);
-        }
-        else if (!PhotonNetwork.IsMasterClient) 
-        {
-            currentPlayers--;
-            Debug.Log("¡El jugador 2 fue el que ha muerto!");
-            GetComponent<PhotonView>().RPC("Vivos", RpcTarget.All, currentPlayers);
-        }
-
-        PhotonNetwork.Destroy(photonView.gameObject);
-
-        if (currentPlayers == 0)
+        Debug.Log("Estado Actualizado:" + "Vivos");
         
-        {
-            GetComponent<PhotonView>().RPC("Vivos", RpcTarget.All, 0);
-            Debug.Log("Game Over");
-            
-            if(PhotonNetwork.IsMasterClient){
-              GetComponent<PhotonView>().RPC("RPC_LoadScene", RpcTarget.All, "GameOver");
-            }
-        }      
+        //Debug.Log("Jugadores Vivos Actualizados son: " + JugadoresVivos);
+        //PhotonNetwork.Destroy(photonView.gameObject);
     }
 
     // Método que centraliza la lógica de teletransporte y control de movimiento
@@ -243,17 +240,22 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         // Mover el Rigidbody a la posición deseada
         rb.MovePosition(targetPos);
 
-        Debug.Log($"Intentando MovePosition a: {targetPos}");
+        //Debug.Log($"Intentando MovePosition a: {targetPos}");
 
         // Reactivar el movimiento después de un breve retraso
         StartCoroutine(ReactivateMovementAfterDelay(0.1f));
+    }
+
+    private void DesactivarJugador()
+    {
+        rb.gameObject.SetActive(false);
     }
 
     private IEnumerator ReactivateMovementAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         canMove = true;
-        Debug.Log("Movimiento reactivado.");
+        //Debug.Log("Movimiento reactivado.");
     }
 
     public void MoverObjetoPorTag()
@@ -276,7 +278,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             {
                 //photonView.RPC("RPC_SyncCoinPosition", RpcTarget.All, coinPhotonView.ViewID, hit.position);
                 objetoEncontrado.transform.position = nuevaPosicion;
-                Debug.Log($"Objeto con tag '{tagDelObjeto}' movido a {nuevaPosicion}.");
+                //Debug.Log($"Objeto con tag '{tagDelObjeto}' movido a {nuevaPosicion}.");
             }
             
         }
@@ -289,9 +291,35 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void Vivos(int currentPlayers)
+    //private void Vivos(int JugadoresVivos)
+    private void Vivos(bool muerte1, bool muerte2)
     {
-        ConsoleVivos.instance.RegisterText("Players: " + currentPlayers);
+        /*if (muerte1 == true && muerte2 == true)
+        {
+            GetComponent<PhotonView>().RPC("Vivos", RpcTarget.All, muerte1,muerte2);
+            Debug.Log("Game Over");
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GetComponent<PhotonView>().RPC("RPC_LoadScene", RpcTarget.All, "GameOverScene");
+            }
+        }*/
+        //ConsoleVivos.instance.RegisterText("Players: " + JugadoresVivos);
+        //Debug.Log(currentPlayers);
+    }
+
+    [PunRPC]
+    private void JugadorMuerto()
+    {
+        DesactivarJugador();
+    }
+    [PunRPC]
+    private void Vidas(int vidas)
+    {
+        if(photonView.IsMine == false)
+        {
+            currentLives = vidas;
+        }
     }
 
     [PunRPC]
@@ -311,8 +339,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         if (currentLives == 0)
         {
             imagenEncontrada = GameObject.FindGameObjectWithTag("Vidas1.1");
-            imagenEncontrada.SetActive(false);
-            
+            imagenEncontrada.SetActive(false);    
         }
 
     }
@@ -340,14 +367,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     [PunRPC]
     private void Win1(int cerezas)
     {
+        //Debug.Log(monedas);
         Debug.Log("Nivel Superado");
         PhotonNetwork.LoadLevel("NivelSuperado");
+
     }
     [PunRPC]
     private void Win2(int cerezas)
     {
         Debug.Log("Nivel Superado");
         PhotonNetwork.LoadLevel("NivelSuperado");
+
     }
 
     [PunRPC]

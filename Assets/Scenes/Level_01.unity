@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d16ec6e85120c4c8ae64f80f47a8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1468,6 +1468,7 @@ GameObject:
   - component: {fileID: 183934047}
   - component: {fileID: 183934048}
   - component: {fileID: 183934049}
+  - component: {fileID: 183934050}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1520,6 +1521,7 @@ MonoBehaviour:
   JoinRoomButton: {fileID: 1929332119}
   NoJugadores: 0
   MaxJugadoresRoom: 2
+  playerMovementSript: {fileID: 0}
 --- !u!54 &183934049
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1547,6 +1549,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &183934050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183934046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62230d2ad8647854faf44c6ee6b5cd35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listaJugadores: []
 --- !u!1 &200724240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1925,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 6189f786c32c4c141ae1aac05ab4509d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c6b9372ef06e9f54cb0881bdbe732c05, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &328705699 stripped
 Transform:
@@ -2948,7 +2963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d16ec6e85120c4c8ae64f80f47a8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -8280,7 +8295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d16ec6e85120c4c8ae64f80f47a8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -8748,7 +8763,7 @@ PrefabInstance:
     - target: {fileID: 3251690325731628864, guid: 8dadb4a5d9de8a941b6bb68d601ad73f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3251690325731628864, guid: 8dadb4a5d9de8a941b6bb68d601ad73f,
         type: 3}

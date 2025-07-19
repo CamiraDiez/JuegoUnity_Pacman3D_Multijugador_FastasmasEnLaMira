@@ -50,6 +50,7 @@ MonoBehaviour:
   - Vivos
   - Win1
   - Win2
+  - JugadorMuerto
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

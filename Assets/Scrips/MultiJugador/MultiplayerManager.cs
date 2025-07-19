@@ -28,6 +28,8 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
 
     public byte MaxJugadoresRoom = 2;
 
+    public PlayerMovement playerMovementSript;
+
     public void ConnectToPhoton()
     {
         var settings = PhotonNetwork.PhotonServerSettings;
@@ -99,7 +101,6 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
             objetoDePremio.SetActive(true);
 
         }
-        
     }
 
     /*public void Jugar()
