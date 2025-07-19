@@ -87,7 +87,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         {
             NoJugadores = PhotonNetwork.CurrentRoom.PlayerCount;
 
-            //ConsolePlayerText.instance1.RegisterText("# de Jugadores: "+NoJugadores+"/"+MaxJugadoresRoom);
+            ConsolePlayerText.instance1.RegisterText("# de Jugadores: "+NoJugadores+"/"+MaxJugadoresRoom);
         }
 
         if(NoJugadores == 2)

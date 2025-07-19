@@ -51,6 +51,8 @@ MonoBehaviour:
   - Win1
   - Win2
   - JugadorMuerto
+  - Vidas
+  - CargarEscena
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

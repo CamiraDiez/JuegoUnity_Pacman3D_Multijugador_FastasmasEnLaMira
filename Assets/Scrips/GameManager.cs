@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void AddPlayer(PlayerMovement jugador)
@@ -38,7 +39,8 @@ public class GameManager : MonoBehaviour
                 //Game Over
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    PhotonNetwork.LoadLevel("GameOverScene");
+                    listaJugadores[0].photonView.RPC("CargarEscena",RpcTarget.All);
+                    //PhotonNetwork.LoadLevel("GameOverScene");
                     Debug.Log("GameOver");
                 }
                 

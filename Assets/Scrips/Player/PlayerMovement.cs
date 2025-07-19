@@ -291,21 +291,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    //private void Vivos(int JugadoresVivos)
-    private void Vivos(bool muerte1, bool muerte2)
+    private void CargarEscena()
     {
-        /*if (muerte1 == true && muerte2 == true)
-        {
-            GetComponent<PhotonView>().RPC("Vivos", RpcTarget.All, muerte1,muerte2);
-            Debug.Log("Game Over");
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-                GetComponent<PhotonView>().RPC("RPC_LoadScene", RpcTarget.All, "GameOverScene");
-            }
-        }*/
-        //ConsoleVivos.instance.RegisterText("Players: " + JugadoresVivos);
-        //Debug.Log(currentPlayers);
+        SceneManager.LoadScene("GameOverScene");
     }
 
     [PunRPC]
