@@ -18,9 +18,12 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject ContVidas2;
     [SerializeField] public GameObject objetoDePremio;
 
+    GameObject JugadorInstanciado;
+
     public PhotonView playerPrefab;
-    public Transform spawPoint;
-   
+    public Transform spawPoint1;
+    public Transform spawPoint2;
+
     public Button ConnectButton;
     public Button JoinRoomButton;
 
@@ -29,6 +32,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
     public byte MaxJugadoresRoom = 2;
 
     public PlayerMovement playerMovementSript;
+    private Renderer rendererJugador;
 
     public void ConnectToPhoton()
     {
@@ -75,8 +79,16 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         ConsoleText.instance.RegisterText("On Joined Room");
         JoinRoomButton.interactable = false;
-        PhotonNetwork.Instantiate(playerPrefab.name, spawPoint.position, spawPoint.rotation);
-
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("Jugador 1 Conectado");
+            PhotonNetwork.Instantiate(playerPrefab.name, spawPoint1.position, spawPoint1.rotation);
+        }
+        else
+        {
+            Debug.Log("Jugador 2 Conectado");
+            JugadorInstanciado = PhotonNetwork.Instantiate(playerPrefab.name, spawPoint2.position, spawPoint2.rotation);
+        }
     }
 
     [PunRPC]
@@ -94,7 +106,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         {
             canvaJuego.SetActive(true);
             waitRoom.SetActive(false);
-            play.SetActive(true);
+            //play.SetActive(true);
             ghost.SetActive(true);
             ContVidas1.SetActive(true);
             ContVidas2.SetActive(true);
@@ -102,6 +114,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
 
         }
     }
+    
 
     /*public void Jugar()
     {

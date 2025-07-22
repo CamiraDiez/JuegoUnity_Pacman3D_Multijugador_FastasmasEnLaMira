@@ -1516,7 +1516,8 @@ MonoBehaviour:
   objetoDePremio: {fileID: 2043487066}
   playerPrefab: {fileID: 2647429992100314124, guid: 76a768daece0c9c45a395cf9b28244d8,
     type: 3}
-  spawPoint: {fileID: 940907051}
+  spawPoint1: {fileID: 940907051}
+  spawPoint2: {fileID: 558120479}
   ConnectButton: {fileID: 1925792981}
   JoinRoomButton: {fileID: 1929332119}
   NoJugadores: 0
@@ -3221,6 +3222,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &558120478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558120479}
+  m_Layer: 0
+  m_Name: SpawPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558120479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558120478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.81, y: 0.5, z: 61.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &559552091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4765575146750094, guid: 807a583b1382b7543ad9555f56ddc2af,
@@ -4563,7 +4595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940907051}
   m_Layer: 0
-  m_Name: SpawPoint
+  m_Name: SpawPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9202,6 +9234,7 @@ SceneRoots:
   - {fileID: 327584759}
   - {fileID: 183934047}
   - {fileID: 940907051}
+  - {fileID: 558120479}
   - {fileID: 1858792949}
   - {fileID: 1788480813}
   - {fileID: 542293599}

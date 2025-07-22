@@ -207,16 +207,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
     }
 
-    //Crear una una función que apague el jugador
-    //Crear un RPC que informe a todos los clientes
-
-
     // Método para manejar la muerte del jugador
     private void Die()
     {
 
-        //JugadoresVivos--;
-        //Debug.Log("Jugadores Vivos: " + JugadoresVivos);
         
         // Detener el movimiento y cualquier otra lógica del jugador
         canMove = false;
@@ -225,9 +219,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         currentPlayers--;
 
         Debug.Log("Estado Actualizado:" + "Vivos");
-        
-        //Debug.Log("Jugadores Vivos Actualizados son: " + JugadoresVivos);
-        //PhotonNetwork.Destroy(photonView.gameObject);
     }
 
     // Método que centraliza la lógica de teletransporte y control de movimiento
