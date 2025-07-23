@@ -1,7 +1,8 @@
-using UnityEngine;
+using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
-using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MultiplayerManager : MonoBehaviourPunCallbacks
@@ -26,6 +27,7 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
 
     public Button ConnectButton;
     public Button JoinRoomButton;
+    public Button BackButton;
 
     public int NoJugadores;
 
@@ -106,21 +108,15 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         {
             canvaJuego.SetActive(true);
             waitRoom.SetActive(false);
-            //play.SetActive(true);
             ghost.SetActive(true);
             ContVidas1.SetActive(true);
             ContVidas2.SetActive(true);
             objetoDePremio.SetActive(true);
-
         }
     }
     
-
-    /*public void Jugar()
+    public void atras()
     {
-        infoPlayer1.SetActive(true);
-        infoPlayer2.SetActive(true);
-        vidas1.SetActive(true);
-        vidas2.SetActive(true);
-    }*/
+        SceneManager.LoadScene("MainMenu");
+    }
 }

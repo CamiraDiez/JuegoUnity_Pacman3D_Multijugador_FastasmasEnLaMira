@@ -5,7 +5,7 @@ public class FadeOutAndReturn : MonoBehaviour
 {
     public CanvasGroup fadePanel;
     public float fadeDuration = 1f;
-    public string sceneToLoad = "Level_01"; // Nos vamos a volver al nivel 1 para jugar
+    public string sceneToLoad = "MainMenu"; // Nos vamos a volver al nivel 1 para jugar
 
     public void LoadSceneWithFade()
     {

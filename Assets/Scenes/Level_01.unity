@@ -1520,6 +1520,7 @@ MonoBehaviour:
   spawPoint2: {fileID: 558120479}
   ConnectButton: {fileID: 1925792981}
   JoinRoomButton: {fileID: 1929332119}
+  BackButton: {fileID: 1121608868}
   NoJugadores: 0
   MaxJugadoresRoom: 2
   playerMovementSript: {fileID: 0}
@@ -3861,7 +3862,7 @@ GameObject:
   - component: {fileID: 746430063}
   - component: {fileID: 746430062}
   m_Layer: 5
-  m_Name: ButtonPlay
+  m_Name: ButtonOpciones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3884,7 +3885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 777, y: -459}
+  m_AnchoredPosition: {x: 772, y: 456}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746430062
@@ -3963,7 +3964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 201afd27f191fbb4297a55599aade8dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eee3fe2b77e4acb488923085b2e54b86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4909,7 +4910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1121608869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 183934048}
+        m_TargetAssemblyTypeName: MultiplayerManager, Assembly-CSharp
+        m_MethodName: atras
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1121608869
 MonoBehaviour:
   m_ObjectHideFlags: 0

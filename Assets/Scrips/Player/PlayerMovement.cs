@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
+using JetBrains.Annotations;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -8,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviourPunCallbacks
@@ -30,7 +32,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public int CurrentLives => currentLives;
     private int JugadoresVivos = 2;
     public int currentPlayers; //Jugadores Actuales
-    
 
     // Variable para controlar si el jugador puede moverse
     private bool canMove = true;
@@ -278,9 +279,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             // Si el objeto no se encuentra, muestra una advertencia útil.
             Debug.LogWarning($"ERROR: No se encontró ningún GameObject con el tag '{tagDelObjeto}' en la escena. " +
                              "Asegúrate de que el tag esté bien escrito y que el GameObject esté activo en la jerarquía.");
-        }
+        } 
     }
-
+    
     [PunRPC]
     private void CargarEscena()
     {
