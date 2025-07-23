@@ -466,6 +466,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212981779}
   m_CullTransparentMesh: 1
+--- !u!1 &270154032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270154033}
+  - component: {fileID: 270154034}
+  m_Layer: 5
+  m_Name: ConfettiManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &270154033
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270154032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2137976553}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &270154034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270154032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94911d90cc1db54ca5f8377d9b6daad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfConfetti: {fileID: 7682036751304292156, guid: 1f6745e413120d2458005934599b5247,
+    type: 3}
+  colorArray:
+  - {r: 1, g: 0.5019608, b: 0.8, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.4, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.8, b: 0.4, a: 1}
+  - {r: 0.8, g: 0.6, b: 1, a: 1}
+  - {r: 1, g: 0.4, b: 0.4, a: 1}
+  - {r: 0.6, g: 1, b: 0.6, a: 1}
+  - {r: 1, g: 0.6, b: 0.2, a: 1}
+  - {r: 0.6, g: 0.8, b: 1, a: 1}
+  - {r: 0.8980392, g: 0.8980392, b: 0.29803923, a: 1}
+  - {r: 0.8, g: 0.3019608, b: 1, a: 1}
+  - {r: 0.3019608, g: 1, b: 0.8980392, a: 1}
+  - {r: 0.4, g: 0.4, b: 1, a: 1}
+  - {r: 1, g: 0.3019608, b: 0.3019608, a: 1}
 --- !u!1 &379277682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1069,7 @@ GameObject:
   - component: {fileID: 1909323758}
   - component: {fileID: 1909323760}
   - component: {fileID: 1909323759}
+  - component: {fileID: 1909323761}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1069,6 +1135,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909323757}
   m_CullTransparentMesh: 1
+--- !u!114 &1909323761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909323757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eac34fe67268b44f9facadb7cfae4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confettiManager: {fileID: 270154032}
 --- !u!1 &1910395317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1378,7 @@ RectTransform:
   - {fileID: 1909323758}
   - {fileID: 1002148485}
   - {fileID: 1910395318}
+  - {fileID: 270154033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
