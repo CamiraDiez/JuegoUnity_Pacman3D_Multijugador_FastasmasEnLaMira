@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameOverUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Ir 
+    public void RetryLevel()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Volver al menú principal
+    public void GoToMainMenu()
     {
-        
+        SceneManager.LoadScene("MainMenu"); // Asegúrate que el nombre esté bien escrito
     }
 }
