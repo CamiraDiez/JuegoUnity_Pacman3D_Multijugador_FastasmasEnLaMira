@@ -20,9 +20,12 @@ public class Window : MonoBehaviour
         SpawnConfetti();
     }
 
-    // ✅ ESTO DEBE ESTAR ACTIVO
+    // 
     private void Update()
     {
+        Debug.Log("CONFETTI: Update corriendo...");  //LINEA
+
+
         foreach (Confetti confetti in new List<Confetti>(confettiList))
         {
             if (confetti.Update())
@@ -55,6 +58,25 @@ public class Window : MonoBehaviour
         confettiList.Add(confetti);
     }
 
+    ////////////////////7
+    // 
+    public void IniciarConfetti()
+    {
+        // Limpia confeti anterior 
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        confettiList.Clear();
+        spawnTimer = 0f;
+
+        Debug.Log("CONFETTI MANAGER: Confetti reiniciado");
+    }
+
+    // 
+
+    //////////////////////
     private class Confetti
     {
         private Transform transform;
